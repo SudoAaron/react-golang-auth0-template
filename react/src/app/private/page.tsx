@@ -13,14 +13,12 @@ export const Private = () => {
 
   useEffect(() => {
     const accessPage = async () => {
-      const domain = process.env.NEXT_PUBLIC_AUTH0_DOMAIN
       const accessToken = await getAccessTokenSilently({
         authorizationParams: {
           audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
           scope: "openid profile email read:messages",
         },
       });
-
       axios({
         url: process.env.NEXT_PUBLIC_API_ENDPOINT + "/private",
         method: "GET",
