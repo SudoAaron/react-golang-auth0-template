@@ -15,9 +15,6 @@ func CheckRoles(allowedRoles []string, db *sql.DB) func(http.Handler) http.Handl
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-			// func CheckRoles(allowedRoles []string, db *sql.DB, next http.Handler) http.Handler {
-			// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
 			// Get the token claims from the request context
 			token := r.Context().Value(jwtmiddleware.ContextKey{})
 			if token == nil {
