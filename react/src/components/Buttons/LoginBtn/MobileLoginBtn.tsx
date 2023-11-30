@@ -1,4 +1,3 @@
-
 import { useAuth0 } from "@auth0/auth0-react";
 
   const userNavigation = [
@@ -6,12 +5,21 @@ import { useAuth0 } from "@auth0/auth0-react";
     { name: 'Sign out' },
 ]
 
-  interface MobileNavLoginBtnProps {
-    isAuthenticated: boolean;
-  }
+interface MobileNavLoginBtnProps {
+  handleLogin: () => void;
+}
   
-  const MobileNavLoginBtn: React.FC<MobileNavLoginBtnProps> = ({ isAuthenticated }) => {
-  const { user, loginWithRedirect, logout } = useAuth0();
+  const MobileNavLoginBtn: React.FC<MobileNavLoginBtnProps> = ({handleLogin}) => {
+    const { user, loginWithPopup, isAuthenticated, logout } = useAuth0();
+
+    const handleLoginClick = async () => {
+      try {
+        await loginWithPopup({authorizationParams: {}})
+        handleLogin();
+       } catch(e) {
+        console.error(e)
+       }
+    };
 
     return (              
         <div>
@@ -39,7 +47,9 @@ import { useAuth0 } from "@auth0/auth0-react";
         ) : (
         <div className="py-6">
             <a
-                onClick={() => loginWithRedirect()}
+                // onClick={() => loginWithRedirect()}
+                onClick={() => handleLoginClick()}
+                // onClick={() => loginWithPopup({})}
                 className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             >
                 Log in

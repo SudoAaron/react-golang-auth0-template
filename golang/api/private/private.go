@@ -39,7 +39,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	userID := subParts[1]
 
 	// Can use this userID for associations with this specific user
-	fmt.Println(userID)
+	fmt.Println("from /private:", userID)
 
 	responseData := map[string]string{"message": "Welcome to the private page"}
 	w.Header().Set("Content-Type", "application/json")

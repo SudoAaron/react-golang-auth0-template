@@ -8,6 +8,7 @@ This project consists of two main components:
 
 1. React Frontend: A React-based web application for user interaction and frontend logic.
 2. Golang Backend: A Golang API providing secure backend services.
+3. Postgres Database: The database to hold user data, including roles.
 
 ## Getting Started
 To get this application up and running, you'll need to set up both the frontend and backend components. Here are the general steps you'll follow:
@@ -32,6 +33,10 @@ Once both applications are running:
 1. Open your browser and navigate to http://localhost:3000.
 2. Test the Auth0 integration by attempting to log in through the React application.
 3. Ensure that the React app can communicate with the Golang API securely using Auth0 tokens.
+4. The public route is accessible without authentication.
+5. The private route is accessible with authentication.
+6. The admin route is accessible with the admin role. You can give yourself this role through the user profile page.
+
 
 ## Contributing
 We welcome contributions to this project!
